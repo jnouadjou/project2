@@ -1,0 +1,38 @@
+{
+    "services": {
+       "title": "SPECIALITIES",
+       "list": [
+          {
+             "ul": "Ortho"
+          },
+          {
+             "ul": "Cardio"
+          },
+          {
+             "ul": "Optho"
+          },
+          {
+             "ul": "Nephro"
+          },
+          {
+             "ul": "Neuro"
+          },
+          {
+             "ul": "onco"
+          }
+       ],
+       "contact": [
+         {
+            "category":"Address: ",
+            "content":"Rajaji nagar,Bangalore"
+         },{
+           "category":"Phone Num: ",
+           "content":"9876543210"
+         },{
+            "category":"Email: ",
+            "content":"xyzhospital@yahoo.com"
+  
+         }
+      ]
+    }
+ }
