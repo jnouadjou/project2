@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <style>
+        body {
+            Background-image: url('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/a-z-hospital-departments-1566209638.jpg');
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #f2f2f2;
+        }
+
+        .topnav a {
+            float: right;
+            color: #333;
+            text-align: center;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .topnav p {
+            float: left;
+            color: #000;
+            text-align: center;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .topnav a:hover {
+            background-color: #23D6E9;
+            color: black;
+        }
+
+        #header {
+            color: black;
+            padding: 40px;
+        }
+
+        .button {
+            background-color: #129EA9;
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        table, th, td {
+  border:1px solid black;
+}
+    </style>
+</head>
+
+<body>
+    <div class="topnav">
+        <p><b><i>Jeff/Jingyan Health Care</i></b></p>
+        <a href="" onclick="loadSpecialityDoc()">Specialities</a>
+        <a href="doctor_info.xml">Doctor Info</a>
+        <a class="active" href="#home">Home</a>
+    </div>
+    <h1 id="header">
+        <center>TAKE THE WORLD'S BEST QUALITY TREATMENT</center>
+    </h1>
+    <p>
+        <center><i>WE CARE FOR YOUR HEALTH</i></center>
+    </p><br>
+    <p>
+        <center><button class="button" onclick="loadXMLDoc()">Specialities</button></center>
+    </p>
+  
+  <p id="demo" style="text-align: -webkit-center;"></p>
+    <br><br>
+    <p>
+        <center><button class="button" onclick="loadSpecialityDoc()">Contact Us</button> </center>
+    </p>
+    <p id="sp" style="text-align: -webkit-center;"><b>LIST OF SPECIALITIES</b></p>
+
+    <footer><a href="contactinfo.txt" download>Download Contact Info</a></footer>
+
+    <script>
+        function loadXMLDoc() {
+            $.ajax({
+                url: "hospital_info.json",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                   
+                    var infoList = data.services.list;
+                    var infoContent = "";
+                    for (var i = 0; i < infoList.length; i++) {
+                        infoContent += "<tr><td>" + infoList[i].ul + "</td></tr>";
+                    }
+                    document.getElementById("demo").innerHTML = "<table>" + infoContent + "</table>";
+                   
+                }
+            })
+        }
+
+
+        function loadSpecialityDoc() {
+            $.ajax({
+                url: "hospital_info.json",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                   
+                    var infoList = data.services.contact;
+                    var infoContent = "";
+                    for (var i = 0; i < infoList.length; i++) {
+                        infoContent += "<tr><td>" + infoList[i].category + "</td><td>" + infoList[i].content + "</td></tr>";
+                    }
+                    document.getElementById("sp").innerHTML = "<table>" + infoContent + "</table>";
+                   
+                }
+            })
+        }
+    </script>
+
+
+</body>
+
+</html>
